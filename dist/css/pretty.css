@@ -1,0 +1,13 @@
+/* BASE 
+============================================================================= */
+html,
+body {
+  min-height: 2500px;
+}
+html {
+  overflow-y: scroll;
+}
+body {
+  background: #f938ab;
+  position: relative;
+}

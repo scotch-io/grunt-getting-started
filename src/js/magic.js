@@ -5,7 +5,7 @@ $(document).ready(function() {
     // =========================================================================
     $('#search-button').click(function() {
         // get the width of header
-        var hwidth  = $('#top-nav').width();
+        var hwidth  = $('#top-nav').width();  
         console.log(hwidth);
 
         // set the height and width for input

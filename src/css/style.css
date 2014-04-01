@@ -7,7 +7,7 @@
 	Version: 25.0
 */
 
-/* BASE
+/* BASE 
 ============================================================================= */
 html, body 					{ min-height:2500px; }
 html 						{ overflow-y:scroll; }
@@ -28,7 +28,7 @@ table 						{ font-size:14px; }
 	.scolor-twitter:hover 		{ color:#93E7FA; }
 	.scolor-google-plus:hover 	{ color:#F74840; }
 	.scolor-rss:hover 			{ color:#F5C779; }
-	.scolor-email:hover 		{ color:#CCC; }
+	.scolor-email:hover 		{ color:#CCC; }   
 
 .sbg-facebook 					{ background:#3971B6; }
 .sbg-twitter 					{ background:#A0D6E2; }

@@ -9,6 +9,14 @@ module.exports = function(grunt) {
     // this way we can use things like name and version (pkg.name)
     pkg: grunt.file.readJSON('package.json'),
 
+    // configure jshint to validate js files -----------------------------------
+    jshint: {
+      options: {
+        reporter: require('jshint-stylish')
+      },
+      all: ['Grunfile.js', 'src/**/*.js']
+    },
+
     // configure uglify to minify js files -------------------------------------
     uglify: {
       options: {
@@ -16,7 +24,16 @@ module.exports = function(grunt) {
       },
       build: {
         files: {
-          'dist/js/magic.min.js': ['src/js/magic.js']
+          'dist/js/magic.min.js': 'src/js/magic.js'
+        }
+      }
+    },
+
+    // compile less stylesheets to css -----------------------------------------
+    less: {
+      build: {
+        files: {
+          'dist/css/pretty.css': 'src/css/pretty.less'
         }
       }
     },
@@ -28,17 +45,21 @@ module.exports = function(grunt) {
       },
       build: {
         files: {
-          'dist/css/style.min.css': ['src/css/style.css']
+          'dist/css/style.min.css': 'src/css/style.css'
         }
       }
     },
 
-    // configure jshint to validate js files -----------------------------------
-    jshint: {
-      options: {
-        reporter: require('jshint-stylish')
+    // configure watch to auto update ------------------------------------------
+    watch: {
+      stylesheets: {
+        files: ['src/**/*.css', 'src/**/*.less'],
+        tasks: ['less', 'cssmin']
       },
-      all: ['Grunfile.js', 'src/**/*.js']
+      scripts: {
+        files: 'src/**/*.js',
+        tasks: ['jshint', 'uglify']
+      }
     }
 
   });
@@ -48,14 +69,13 @@ module.exports = function(grunt) {
   // ===========================================================================
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-less');
-  grunt.loadNpmTasks('grunt-contrib-htmlmin');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
   // ===========================================================================
-  // LOAD GRUNT PLUGINS ========================================================
+  // SET DEFAULT TASK ==========================================================
   // ===========================================================================
-  grunt.registerTask('default', ['jshint', 'uglify', 'cssmin']);
+  grunt.registerTask('default', ['jshint', 'uglify', 'cssmin', 'less']);
 
 };
