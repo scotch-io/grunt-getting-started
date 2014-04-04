@@ -1,13 +1,10 @@
-/* BASE 
-============================================================================= */
-html,
 body {
-  min-height: 2500px;
+  background: #cc594a;
+  color: #b8cc24;
 }
-html {
-  overflow-y: scroll;
+button {
+  background: #8bc5ff;
 }
-body {
-  background: #f938ab;
-  position: relative;
+div {
+  background: #6f3596;
 }
